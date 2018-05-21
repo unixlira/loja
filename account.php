@@ -1,33 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Up Style | Cadastro</title>
-<link rel="shortcut icon" href="favicon.ico">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!-- jQuery (Necessário para pluguins Javascript do Bootstrap) -->
-<script src="js/jquery.min.js"></script>
-<!-- Customização de tema de arquivo -->
-<!--Estilo -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<!--//Estilo-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Fashion Mania Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Menu -->
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>
-<script src="js/simpleCart.min.js"> </script>
-<!-- slide -->
-</head>
 <body>
 <!--header-->
-<?php include("header.php"); ?>
+<?php include 'header.php'; ?>
 <!--/header-->
 <div class="account">
 	<div class="container">
@@ -57,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 <!--footer-->
-<?php include("footer.php"); ?>
+<?php include 'footer.php'; ?>
 <!--/footer>
 </body>
 </html>

@@ -133,9 +133,22 @@ p.log a:hover{
   text-align: right;
     margin-top: 1%;
 }
+#pesquisa {
+  margin-left: -15px !important;
+}
+
+#botao_search {
+  outline: none;
+  margin-left: 125% !important;
+  margin-top: -15%;
+  float: left;
+  clear: both;
+
+}
 i.glyphicon.glyphicon-search {
   color: #000;
   font-size: 1em;
+  margin-left: -55px !important;
 }
 .world {
   margin-top: 2%;
@@ -306,6 +319,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   border: 1px solid #e31355;
   padding: 1em;
   border-bottom:5px solid #e31355;
+  margin-top: 30px;
 }
 .col-md1:hover {
   border: 1px solid #82FA58;

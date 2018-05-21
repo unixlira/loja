@@ -1,31 +1,21 @@
+<?php require_once 'conexao/conexao.php';
+//Abrir consulta ao banco de dados na tabela produtos
+    setlocale(LC_ALL, 'pt_BR');
+    $consulta_produtos = 'SELECT id, nome, pagina, preco ';
+    $consulta_produtos .= 'FROM produtos';
+    if (isset($_GET['produto'])) {
+        $nome_produto = $_GET['produto'];
+        $consulta_produtos .= " WHERE nome LIKE '%{$nome_produto}%' ";
+    }
+    $produtos = mysqli_query($conecta, $consulta_produtos);
+
+    if (!$produtos) {
+        die('<h1>Error: Fail connect in DATABASE</h1>');
+    }
+
+?>
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Up Style Fashion</title>
-		<link rel="shortcut icon" href="favicon.ico">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-		<meta name="theme-color" content="#ffffff">
-		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery.min.js"></script>
-		<!-- Custom Theme files -->
-		<!--theme-style-->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-		<!--//theme-style-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="keywords" content="Up Sites Now Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design , sites mooca, e-commerce mooca, loja virtual Mooca, Loja Roupas Up Style" />
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<!-- start menu -->
-		<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-		<script type="text/javascript" src="js/memenu.js"></script>
-		<script>$(document).ready(function(){$(".memenu").memenu();});</script>
-		<script src="js/simpleCart.min.js"> </script>
-		<!-- slide -->
-		<script src="js/responsiveslides.min.js"></script>
-		<script src="js/functions.js"></script>
-	</head>
+<html>	
 	<body>
 	<!--header-->
 	<?php include 'header.php'; ?>
@@ -64,124 +54,41 @@
 	<!--content-->
 		<div class="content">
 			<div class="container">
-				<div class="content-top">
+				<div class="content-top" id="busca">
 					<h1>Novidades até 70% OFF</h1>
-					<div class="content-top1">
-						<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi.png" alt="" />
-								</a>
-								<h3><a href="single.php">Tops</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
+					<div class="col-md- top-footer1">
+							<form action="index.php" method="get">
+								<input style="width:50%;margin-left:200px;" placeholder="Pesquisar" type="text"  value="Pesquisar..." name="produto">
+								<input style="width:15%;" type="submit"  value="Enviar" >
+							</form>
+							<br>
+					</div>						
+						<div class="row">
+							<div class="content-top1">	
+								<?php
+                                    while ($listagem = mysqli_fetch_assoc($produtos)) {
+                                        ?>							
+								<div class="col-md-3 col-md2">
+									<div class="col-md1 simpleCart_shelfItem">										
+										<a href="single.php?codigo=<?php echo $listagem['id']; ?>">
+											<img class="img-responsive" src="<?php echo $listagem['pagina']; ?>" alt="<?php echo $listagem['nome']; ?>" title=" <?php echo utf8_encode($listagem['nome']); ?>" />
+										</a>
+										<h3><a href="single.phpcodigo=<?php echo $listagem['id']; ?>"><?php echo utf8_encode($listagem['nome']); ?></a></h3>
+										<div class="price">
+											<h5 class="item_price">R$ <?php echo number_format($listagem['preco'], 2, ',', '.'); ?></h5>
+											<a href="#" class="item_add">Comprar</a>
+											<div class="clearfix"> </div>
+										</div>	
+									</div>
 								</div>
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi2.png" alt="" />
-								</a>
-								<h3><a href="single.php">T-Shirt</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi4.png" alt="" />
-								</a>
-								<h3><a href="single.php">Shirt</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi1.png" alt="" />
-								</a>
-								<h3><a href="single.php">Tops</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="clearfix"> </div>
-					</div>	
-					<div class="content-top1">
-						<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi3.png" alt="" />
-								</a>
-								<h3><a href="single.php">Shirt</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi5.png" alt="" />
-								</a>
-								<h3><a href="single.php">T-Shirt</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi6.png" alt="" />
-								</a>
-								<h3><a href="single.php">Jeans</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="col-md-3 col-md2">
-							<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
-									<img class="img-responsive" src="images/pi7.png" alt="" />
-								</a>
-								<h3><a href="single.php">Tops</a></h3>
-								<div class="price">
-									<h5 class="item_price">R$ 300</h5>
-									<a href="#" class="item_add">Comprar</a>
-									<div class="clearfix"> </div>
-								</div>
-								
-							</div>
-						</div>	
-					<div class="clearfix"> </div>
+								<?php
+                                    }
+                                    //Liberar dados da memória do servidor
+                                    // mysqli_free_result($produtos);
+                                ?>
+							</div>								
+						</div>							
+						<div class="clearfix"> </div>
 					</div>	
 				</div>
 			</div>
@@ -192,3 +99,6 @@
 		<!--footer-->
 	</body>
 </html>
+<?php
+    //Fechar conexão
+    mysqli_close($conecta);
