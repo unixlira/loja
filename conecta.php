@@ -1,6 +1,12 @@
-<?php require_once 'conexao/conexao.php'; ?>
+<?php 
+require_once 'conexao/conexao.php';
+//Iniciar sessao
+session_start();
 
-
+if (!isset($_SESSION['user_portal'])) {
+    header('location:account.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head></head>

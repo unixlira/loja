@@ -24,6 +24,11 @@ if (!$detalhe) {
     $preco = $dados_detalhe['preco'];
     $pagina = $dados_detalhe['pagina'];
 }
+
+// if (!isset($_SESSION['user_portal'])) {
+//     alert('Você precisa se cadastrar para Comprar.');
+// }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +85,8 @@ if (!$detalhe) {
 								</li>
 							</ul>
 						</div>
-						<a href="#" class="cart item_add">Mais Detalhes</a>
+						
+						<a id="comprar" href="checkout.php" class="cart item_add">Comprar</a>
 				</div>
 				<div class="face">
 					<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&width=450&layout=standard&action=like&size=large&show_faces=false&share=true&height=35&appId" width="450" height="35" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br>
@@ -95,13 +101,13 @@ if (!$detalhe) {
                             ?>
 							<div class="col-md-4 col-md3">
 									<div class="col-md1 simpleCart_shelfItem">
-								<a href="single.php">
+								<a href="detalhe.php">
 									<img class="img-responsive" src="<?php echo $dados_detalhe['pagina']; ?>" alt="" />
 								</a>
-								<h3><a href="single.php"><?php echo utf8_encode($dados_detalhe['nome']); ?></a></h3>
+								<h3><a href="detalhe.php"><?php echo utf8_encode($dados_detalhe['nome']); ?></a></h3>
 								<div class="price">
 										<h5 class="item_price">R$<?php echo number_format('%.2n', $dados_detalhe['preco']); ?></h5>
-										<a href="#" class="item_add">Comprar</a>
+										<a href="checkout.php" class="item_add">Comprar</a>
 										<div class="clearfix"> </div>
 								</div>
 							</div>
@@ -124,38 +130,38 @@ if (!$detalhe) {
 									<ul class="menu-drop">
 									<li class="item1"><a href="#">Masculino </a>
 										<ul class="cute">
-											<li class="subitem1"><a href="single.php">Lançamentos </a></li>
-											<li class="subitem2"><a href="single.php">Alternativo </a></li>
-											<li class="subitem3"><a href="single.php">Promoção </a></li>
+											<li class="subitem1"><a href="detalhe.php">Lançamentos </a></li>
+											<li class="subitem2"><a href="detalhe.php">Alternativo </a></li>
+											<li class="subitem3"><a href="detalhe.php">Promoção </a></li>
 										</ul>
 									</li>
 									<li class="item2"><a href="#">Feminino </a>
 										<ul class="cute">
-											<li class="subitem1"><a href="single.php">Lançamentos </a></li>
-											<li class="subitem2"><a href="single.php">Alternativo </a></li>
-											<li class="subitem3"><a href="single.php">Promoção </a></li>
+											<li class="subitem1"><a href="detalhe.php">Lançamentos </a></li>
+											<li class="subitem2"><a href="detalhe.php">Alternativo </a></li>
+											<li class="subitem3"><a href="detalhe.php">Promoção </a></li>
 										</ul>
 									</li>
 									<li class="item3"><a href="#">Infantil</a>
 										<ul class="cute">
-											<li class="subitem1"><a href="single.php">Masculino </a></li>
-											<li class="subitem2"><a href="single.php">Feminino </a></li>
-											<li class="subitem3"><a href="single.php">Promoção </a></li>
+											<li class="subitem1"><a href="detalhe.php">Masculino </a></li>
+											<li class="subitem2"><a href="detalhe.php">Feminino </a></li>
+											<li class="subitem3"><a href="detalhe.php">Promoção </a></li>
 										</ul>
 									</li>
 									<li class="item4"><a href="#">Acessórios</a>
 										<ul class="cute">
-											<li class="subitem1"><a href="single.php">Colar e Anel </a></li>
-											<li class="subitem2"><a href="single.php">Relógios </a></li>
-											<li class="subitem3"><a href="single.php">Promoção </a></li>
+											<li class="subitem1"><a href="detalhe.php">Colar e Anel </a></li>
+											<li class="subitem2"><a href="detalhe.php">Relógios </a></li>
+											<li class="subitem3"><a href="detalhe.php">Promoção </a></li>
 										</ul>
 									</li>
 											
 									<li class="item4"><a href="#">Sapatos</a>
 										<ul class="cute">
-											<li class="subitem1"><a href="single.php">Masculino </a></li>
-											<li class="subitem2"><a href="single.php">Feminino </a></li>
-											<li class="subitem3"><a href="single.php">Promoção </a></li>
+											<li class="subitem1"><a href="detalhe.php">Masculino </a></li>
+											<li class="subitem2"><a href="detalhe.php">Feminino </a></li>
+											<li class="subitem3"><a href="detalhe.php">Promoção </a></li>
 										</ul>
 									</li>
 								</ul>
@@ -186,40 +192,40 @@ if (!$detalhe) {
 								<h3 class="cate">Mais Vendidos</h3>
 							<div class="product-go">
 								<div class=" fashion-grid">
-									<a href="single.php"><img class="img-responsive " src="images/pr.jpg" alt=""></a>	
+									<a href="detalhe.php"><img class="img-responsive " src="images/pr.jpg" alt=""></a>	
 								</div>
 								<div class=" fashion-grid1">
-									<h6 class="best2"><a href="single.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
+									<h6 class="best2"><a href="detalhe.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
 									<span class=" price-in1"> R$40.00</span>
 								</div>	
 								<div class="clearfix"> </div>
 							</div>
 							<div class="product-go">
 								<div class=" fashion-grid">
-									<a href="single.php"><img class="img-responsive " src="images/pr1.jpg" alt=""></a>	
+									<a href="detalhe.php"><img class="img-responsive " src="images/pr1.jpg" alt=""></a>	
 								</div>
 								<div class=" fashion-grid1">
-									<h6 class="best2"><a href="single.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
+									<h6 class="best2"><a href="detalhe.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
 									<span class=" price-in1"> R$40.00</span>
 								</div>	
 								<div class="clearfix"> </div>
 							</div>
 							<div class="product-go">
 								<div class=" fashion-grid">
-									<a href="single.php"><img class="img-responsive " src="images/pr2.jpg" alt=""></a>	
+									<a href="detalhe.php"><img class="img-responsive " src="images/pr2.jpg" alt=""></a>	
 								</div>
 								<div class=" fashion-grid1">
-									<h6 class="best2"><a href="single.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
+									<h6 class="best2"><a href="detalhe.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
 									<span class=" price-in1"> R$40.00</span>
 								</div>	
 								<div class="clearfix"> </div>
 							</div>	
 							<div class="product-go">
 								<div class=" fashion-grid">
-									<a href="single.php"><img class="img-responsive " src="images/pr3.jpg" alt=""></a>	
+									<a href="detalhe.php"><img class="img-responsive " src="images/pr3.jpg" alt=""></a>	
 								</div>
 								<div class=" fashion-grid1">
-									<h6 class="best2"><a href="single.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
+									<h6 class="best2"><a href="detalhe.php" >Camisa Dudalina suave de linho com algodão	  </a></h6>
 									<span class=" price-in1"> R$40.00</span>
 								</div>	
 								<div class="clearfix"> </div>

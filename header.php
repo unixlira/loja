@@ -1,10 +1,8 @@
 <?php 
 require_once 'conexao/conexao.php';
-
 //Iniciar sessao
 session_start();
-//criar variável de sessao
-$_SESSION['usuario'] = 'Matheus';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,8 +34,8 @@ $_SESSION['usuario'] = 'Matheus';
 		<script src="js/responsiveslides.min.js"></script>
 		<script src="js/functions.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-		<script src="main.js"></script>
+		<!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<script src="main.js"></script> -->
 	</head>
 	<body>
 		<div class="header">
@@ -46,9 +44,17 @@ $_SESSION['usuario'] = 'Matheus';
 					<div class="col-sm-8 logo">
 						<a href="index.php"><img src="images/logo2.png" alt="" style="float:left;clear:both;"></a>	
 					</div>
-					<div class="col-sm-4 header-left">		
-						<p class="log"><a href="account.php"  >Entre</a>
-						<span>ou</span><a  href="register.php"  >Cadastrar</a></p>
+					<div class="col-sm-4 header-left">
+						<?php
+
+                            if (isset($_SESSION['user_portal'])) {
+                                echo "<span  class='col-sm-8 header-left'><i><h5  style='font-size:24px;font-family:OleoScript-Regular;'>Bem Vindo, &nbsp".utf8_encode($_SESSION['user_portal']).
+                                 "</i></h5></span><p class='col-sm-12 log '><a href='logout.php'>Sair</a></p>";
+                            } else {
+                                echo "<p class='log'><a href='login.php'  >Entre</a>
+						<span>ou</span><a  href='cadastro.php'  >Cadastrar</a></p>";
+                            }
+                        ?>
 						<div class="cart box_1">
 							<a href="checkout.php">
 								<h3> <div class="total">
@@ -58,9 +64,6 @@ $_SESSION['usuario'] = 'Matheus';
 								<p><a href="javascript:;" class="simpleCart_empty">Carrinho Vazio</a></p>
 						</div>
 						<div class="clearfix"></div>
-							<div>
-								<span>Bem Vindo  <?php echo $_SESSION['usuario']; ?></span>
-							</div>
 					</div>
 						<div class="clearfix"> </div>
 				</div>
@@ -80,15 +83,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Todas Roupas</h4>
 												<ul>
-													<!-- <li><a href="products.php">Camisas</a></li> -->
-													<!-- <li><a href="products.php">Esportiva</a></li> -->
-													<li><a href="products.php">Shorts</a></li>
-													<!-- <li><a href="products.php">Ternos e Blazers</a></li>
-													<li><a href="products.php">Camisa Social</a></li> -->
-													<!-- <li><a href="products.php">Moletom</a></li> -->
-													<li><a href="products.php">Calças</a></li>
-													<li><a href="products.php">Camisetas</a></li>
-													<li><a href="products.php">Lingerie e Meias</a></li>
+													<!-- <li><a href="produtos.php">Camisas</a></li> -->
+													<!-- <li><a href="produtos.php">Esportiva</a></li> -->
+													<li><a href="produtos.php">Shorts</a></li>
+													<!-- <li><a href="produtos.php">Ternos e Blazers</a></li>
+													<li><a href="produtos.php">Camisa Social</a></li> -->
+													<!-- <li><a href="produtos.php">Moletom</a></li> -->
+													<li><a href="produtos.php">Calças</a></li>
+													<li><a href="produtos.php">Camisetas</a></li>
+													<li><a href="produtos.php">Lingerie e Meias</a></li>
 													
 												</ul>	
 											</div>							
@@ -97,15 +100,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Calçados</h4>
 												<ul>
-													<!-- <li><a href="products.php">Botas</a></li>
-													<li><a href="products.php">Tênis</a></li>										
-													<li><a href="products.php">Tênis esportivos</a></li>
-													<li><a href="products.php">Sapatos casuais</a></li>
-													<li><a href="products.php">Tênis de corrida</a></li>										 -->
-													<li><a href="products.php">Rasterinhas</a></li>
-													<li><a href="products.php">Chinelos</a></li>
-													<li><a href="products.php">Sandálias</a></li>
-													<li><a href="products.php">Sapatilhas</a></li>
+													<!-- <li><a href="produtos.php">Botas</a></li>
+													<li><a href="produtos.php">Tênis</a></li>										
+													<li><a href="produtos.php">Tênis esportivos</a></li>
+													<li><a href="produtos.php">Sapatos casuais</a></li>
+													<li><a href="produtos.php">Tênis de corrida</a></li>										 -->
+													<li><a href="produtos.php">Rasterinhas</a></li>
+													<li><a href="produtos.php">Chinelos</a></li>
+													<li><a href="produtos.php">Sandálias</a></li>
+													<li><a href="produtos.php">Sapatilhas</a></li>
 												
 												</ul>	
 											</div>							
@@ -114,15 +117,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Marcas Populares</h4>
 												<ul>
-													<li><a href="products.php">Levis</a></li>
-													<li><a href="products.php">Persol</a></li>
-													<li><a href="products.php">Nike</a></li>
-													<li><a href="products.php">Edwin</a></li>
-													<!-- <li><a href="products.php">New Balance</a></li>
-													<li><a href="products.php">Jack & Jones</a></li>
-													<li><a href="products.php">Paul Smith</a></li>
-													<li><a href="products.php">Ray-Ban</a></li>
-													<li><a href="products.php">Wood Wood</a></li> -->
+													<li><a href="produtos.php">Levis</a></li>
+													<li><a href="produtos.php">Persol</a></li>
+													<li><a href="produtos.php">Nike</a></li>
+													<li><a href="produtos.php">Edwin</a></li>
+													<!-- <li><a href="produtos.php">New Balance</a></li>
+													<li><a href="produtos.php">Jack & Jones</a></li>
+													<li><a href="produtos.php">Paul Smith</a></li>
+													<li><a href="produtos.php">Ray-Ban</a></li>
+													<li><a href="produtos.php">Wood Wood</a></li> -->
 												</ul>	
 											</div>												
 										</div>
@@ -137,15 +140,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Todas Roupas</h4>
 												<ul>
-													<li><a href="products.php">Tiaras</a></li>
-													<li><a href="products.php">Relogios</a></li>
-													<li><a href="products.php">Brincos</a></li>
-													<li><a href="products.php">Cintos e colares</a></li>
-													<!-- <li><a href="products.php">Camisa Social</a></li>
-													<li><a href="products.php">Moletom</a></li>
-													<li><a href="products.php">Calças</a></li>
-													<li><a href="products.php">Camisetas</a></li>
-													<li><a href="products.php">Lingerie e Meias</a></li> -->
+													<li><a href="produtos.php">Tiaras</a></li>
+													<li><a href="produtos.php">Relogios</a></li>
+													<li><a href="produtos.php">Brincos</a></li>
+													<li><a href="produtos.php">Cintos e colares</a></li>
+													<!-- <li><a href="produtos.php">Camisa Social</a></li>
+													<li><a href="produtos.php">Moletom</a></li>
+													<li><a href="produtos.php">Calças</a></li>
+													<li><a href="produtos.php">Camisetas</a></li>
+													<li><a href="produtos.php">Lingerie e Meias</a></li> -->
 													
 												</ul>	
 											</div>							
@@ -154,15 +157,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Calçados</h4>
 												<ul>
-													<!-- <li><a href="products.php">Botas</a></li>
-													<li><a href="products.php">Tênis</a></li>										
-													<li><a href="products.php">Tênis esportivos</a></li>
-													<li><a href="products.php">Sapatos casuais</a></li>
-													<li><a href="products.php">Tênis de corrida</a></li>										 -->
-													<li><a href="products.php">Rasterinhas</a></li>
-													<li><a href="products.php">Chinelos</a></li>
-													<li><a href="products.php">Sandálias</a></li>
-													<li><a href="products.php">Sapatilhas</a></li>
+													<!-- <li><a href="produtos.php">Botas</a></li>
+													<li><a href="produtos.php">Tênis</a></li>										
+													<li><a href="produtos.php">Tênis esportivos</a></li>
+													<li><a href="produtos.php">Sapatos casuais</a></li>
+													<li><a href="produtos.php">Tênis de corrida</a></li>										 -->
+													<li><a href="produtos.php">Rasterinhas</a></li>
+													<li><a href="produtos.php">Chinelos</a></li>
+													<li><a href="produtos.php">Sandálias</a></li>
+													<li><a href="produtos.php">Sapatilhas</a></li>
 												
 												</ul>
 											</div>							
@@ -171,15 +174,15 @@ $_SESSION['usuario'] = 'Matheus';
 											<div class="h_nav">
 												<h4>Marcas Populares</h4>
 												<ul>
-													<li><a href="products.php">Levis</a></li>
-													<li><a href="products.php">Persol</a></li>
-													<li><a href="products.php">Nike</a></li>
-													<li><a href="products.php">New Balance</a></li>
-														<!--<li><a href="products.php">Edwin</a></li>
-													<li><a href="products.php">Jack & Jones</a></li>
-													<li><a href="products.php">Paul Smith</a></li>
-													<li><a href="products.php">Ray-Ban</a></li>
-													<li><a href="products.php">Wood Wood</a></li> -->
+													<li><a href="produtos.php">Levis</a></li>
+													<li><a href="produtos.php">Persol</a></li>
+													<li><a href="produtos.php">Nike</a></li>
+													<li><a href="produtos.php">New Balance</a></li>
+														<!--<li><a href="produtos.php">Edwin</a></li>
+													<li><a href="produtos.php">Jack & Jones</a></li>
+													<li><a href="produtos.php">Paul Smith</a></li>
+													<li><a href="produtos.php">Ray-Ban</a></li>
+													<li><a href="produtos.php">Wood Wood</a></li> -->
 												</ul>	
 											</div>												
 										</div>
@@ -196,6 +199,7 @@ $_SESSION['usuario'] = 'Matheus';
 			</div>
 		</div>		
 	</body>
-</html>	
-	
-
+<?php	
+//Fechar conexão
+mysqli_close($conecta);
+?>

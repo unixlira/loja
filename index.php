@@ -13,6 +13,12 @@
         die('<h1>Error: Fail connect in DATABASE</h1>');
     }
 
+    //Iniciar sessao
+    session_start();
+    //criar variável de sessao
+    if (isset($_SESSION['user_portal'])) {
+    }
+
 ?>
 <!DOCTYPE html>
 <html>	
@@ -58,7 +64,7 @@
 					<h1>Novidades até 70% OFF</h1>
 					<div class="col-md- top-footer1">
 							<form action="index.php" method="get">
-								<input style="width:50%;margin-left:200px;" placeholder="Pesquisar" type="text"  value="Pesquisar..." name="produto">
+								<input style="width:50%;margin-left:200px;" placeholder="Pesquisar..." type="text" name="produto">
 								<input style="width:15%;" type="submit"  value="Enviar" >
 							</form>
 							<br>
@@ -66,17 +72,18 @@
 						<div class="row">
 							<div class="content-top1">	
 								<?php
+
                                     while ($listagem = mysqli_fetch_assoc($produtos)) {
                                         ?>							
 								<div class="col-md-3 col-md2">
 									<div class="col-md1 simpleCart_shelfItem">										
-										<a href="single.php?codigo=<?php echo $listagem['id']; ?>">
+										<a href="detalhe.php?codigo=<?php echo $listagem['id']; ?>">
 											<img class="img-responsive" src="<?php echo $listagem['pagina']; ?>" alt="<?php echo $listagem['nome']; ?>" title=" <?php echo utf8_encode($listagem['nome']); ?>" />
 										</a>
-										<h3><a href="single.phpcodigo=<?php echo $listagem['id']; ?>"><?php echo utf8_encode($listagem['nome']); ?></a></h3>
+										<h3><a href="detalhe.phpcodigo=<?php echo $listagem['id']; ?>"><?php echo utf8_encode($listagem['nome']); ?></a></h3>
 										<div class="price">
 											<h5 class="item_price">R$ <?php echo number_format($listagem['preco'], 2, ',', '.'); ?></h5>
-											<a href="#" class="item_add">Comprar</a>
+											<a href="checkout.php" class="item_add">Comprar</a>
 											<div class="clearfix"> </div>
 										</div>	
 									</div>
@@ -100,5 +107,6 @@
 	</body>
 </html>
 <?php
-    //Fechar conexão
-    mysqli_close($conecta);
+//Fechar conexão
+mysqli_close($conecta);
+?>
