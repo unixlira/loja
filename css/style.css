@@ -30,6 +30,29 @@ body a{
 h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
 }
+.pesquisa input[type="text"] {
+  width: 35%;
+  padding: 0.6em;
+  outline: none;
+  color: #BDBDBD;
+  font-size: 1em;
+  background: none;
+  border: 1px solid #BDBDBD;
+  margin-left: 28%;
+}
+.pesquisa input[type="submit"] {
+  font-size: 0.9em;
+  color: #fff;
+  background-color:#e31355;
+  border: none;
+  padding: 0.8em 0em;
+  width: 10%;
+  vertical-align: top;
+  outline: none;
+}
+.pesquisa input[type="submit"]:hover {
+  background-color:#82FA58;
+}
 /*----*/
 .header-top{
 	border-bottom: 1px solid #eee;
@@ -344,16 +367,18 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 /*--footer--*/
 .top-footer iframe{
-	width: 100%;
-	min-height:300px;
+  width: 100%;
+  height: 365px;
+  margin-top: 10px;
 	border: none;
 }
 
 .top-footer1 h2 {
   font-size: 2em;
   color: #e31355;
-    font-family: 'OleoScript-Regular';
-      margin: 0 0 0.5em;
+  font-family: 'OleoScript-Regular';
+  margin: 0 0 0.5em;
+     
 }
 .top-footer1 input[type="text"] {
   width: 65%;
@@ -385,7 +410,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   padding: 3em 0 ;
 }
 .top-footer1 {
-  margin: 6em 0 0;
+  margin: 6em 12 0;
 }
 .footer-bottom-cate h6{
 	font-size: 1.1em;
@@ -1093,6 +1118,9 @@ ul.nav.nav-pills {
 	
 }
 @media(max-width:1024px){
+.pesquisa input[type="submit"] {
+  width: 18%;
+}
 .content-top h1 {
   font-size: 2.5em;
   margin: 0 0 0.3em;
@@ -1631,6 +1659,11 @@ h1.typo1 {
 }
 
 @media(max-width:320px){
+.pesquisa input[type="text"] {
+  width: 65%;
+  padding: 0.6em;
+  margin-left:25px;
+}
 .logo {
   width: 100%;	
 }

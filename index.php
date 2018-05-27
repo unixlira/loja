@@ -62,10 +62,10 @@
 			<div class="container">
 				<div class="content-top" id="busca">
 					<h1>Novidades até 70% OFF</h1>
-					<div class="col-md- top-footer1">
-							<form action="index.php" method="get">
-								<input style="width:50%;margin-left:200px;" placeholder="Pesquisar..." type="text" name="produto">
-								<input style="width:15%;" type="submit"  value="Enviar" >
+					<div class="pesquisa">
+							<form action="index.php" method="get"  >
+								<input placeholder="Pesquisar..." type="text" name="produto">
+								<input type="submit"  value="Enviar" >
 							</form>
 							<br>
 					</div>						

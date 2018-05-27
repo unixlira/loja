@@ -13,7 +13,7 @@
 							<input type="submit"  value="Enviar" >
 						<br>
 						</form>
-						<br>					
+						<br><br>					
 					<h2>Compartilhe nossas ofertas.</h2>
 							<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUp-Style-946261578871434%2F&tabs=timeline&width=340&height=190&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=192735241473971" width="340" height="190" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
 			</div>
@@ -75,5 +75,68 @@
 			</div>
 	</div>
 </div>
-
 <!--//footer-->
+</body>
+</html>
+
+<!--Inicio dos scripts-->
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!--Menu Categorias page Detalhes-->
+<script type="text/javascript">
+	$(function() {
+		var menu_ul = $('.menu-drop > li > ul'),
+				menu_a  = $('.menu-drop > li > a');
+		menu_ul.hide();
+		menu_a.click(function(e) {
+			e.preventDefault();
+			if(!$(this).hasClass('active')) {
+				menu_a.removeClass('active');
+				menu_ul.filter(':visible').slideUp('normal');
+				$(this).addClass('active').next().stop(true,true).slideDown('normal');
+			} else {
+				$(this).removeClass('active');
+				$(this).next().stop(true,true).slideUp('normal');
+			}
+		});
+	
+	});
+</script>
+<script>
+// Pode se usar tbm o  $(document).ready()
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: "thumbnails"
+  });
+});
+</script>
+<!--Zoom pag Detalhes-->
+<script>
+		$(document).ready(function() {
+		$('.popup-with-zoom-anim').magnificPopup({
+			type: 'inline',
+			fixedContentPos: false,
+			fixedBgPos: true,
+			overflowY: 'auto',
+			closeBtnInside: true,
+			preloader: false,
+			midClick: true,
+			removalDelay: 300,
+			mainClass: 'my-mfp-zoom-in'
+		});
+																		
+		});
+</script>
+<!--Slider  pag Detalhes-->
+<script>
+$(function () {
+	$("#slider").responsiveSlides({
+	auto: true,
+	speed: 500,
+	namespace: "callbacks",
+	pager: true,
+	});
+});
+</script>
+	
