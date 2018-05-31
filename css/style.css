@@ -361,6 +361,16 @@ ul.callbacks_tabs.callbacks1_tabs {
   -moz-transition: 0.5s all;
   -ms-transition: 0.5s all;
 }
+#cadastrar{
+  font-size: 0.9em;
+  color: #fff;
+  background-color: #e31355;
+  border: none;
+  padding: 0.8em 0em;
+  width: 10%;
+  vertical-align: top;
+  outline: none;
+}
 .face iframe{
 	position: absolute;
 	margin-top: 5%;
@@ -688,6 +698,14 @@ a.forgot {
 	padding: 0.5em;
 	margin: 0.5em 0;
 }
+.register-top-grid input[type="email"], .register-bottom-grid input[type="email"] {
+	border: 1px solid #EEE;
+	outline-color:#e31355;
+	width: 100%;
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 0.5em 0;
+}
 
 .checkbox {
 	margin-bottom: 4px;
@@ -776,6 +794,14 @@ a.forgot {
 }
 .mation{
 	padding: 1em 0;
+}
+.mation select{
+  border: 1px solid #EEE;
+	outline-color:#e31355;
+	width: 100%;
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 0.5em 0;
 }
 .register {
 	padding: 4em 0;
@@ -1861,6 +1887,7 @@ h3.cate {
 .mation {
   padding: 0 0 0.5em;
 }
+
 td {
   font-size: 0.75em;
 }

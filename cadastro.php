@@ -1,109 +1,94 @@
-<?php 
-require_once 'conexao/conexao.php';
+<?php require_once 'conexao/conexao.php'; ?>
+<?php
+//inserir no banco
+if (isset($_POST)) {
+    $cliente = array();
 
     if (isset($_POST['nome'])) {
-        $nome = $_POST['nome'];
-        $sobrenome = $_POST['sobrenome'];
-        $email = $_POST['email'];
-        $senha = md5($_POST['password']);
-        $confirma_senha = md5($_POST['remember_token']);
-        $nascimento = $_POST['nascimento'];
-        $rg = $_POST['rg'];
-        $cpf = $_POST['cpf'];
-        $endereco = $_POST['endereco'];
-        $bairro = $_POST['bairro'];
-        $numero = $_POST['numero'];
-        $complemento = $_POST['complemento'];
-        $cidade = $_POST['cidade'];
-        $estado = $_POST['estado'];
-        $cep = $_POST['cep'];
-        $telefone_res = $_POST['telefone_res'];
-        $telefone_cel = $_POST['telefone_cel'];
+        $cliente['nome'] = $_POST['nome'];
+        $cliente['sobrenome'] = $_POST['sobrenome'];
+        $cliente['email'] = $_POST['email'];
+        $cliente['nascimento'] = $_POST['nascimento'];
+        $cliente['cpf'] = $_POST['cpf'];
+        $cliente['telefone'] = $_POST['telefone'];
+        $cliente['endereco'] = $_POST['endereco'];
+        $cliente['complemento'] = $_POST['complemento'];
+        $cliente['cep'] = $_POST['cep'];
+        $cliente['cidade'] = $_POST['cidade'];
+        $cliente['estados'] = $_POST['estados'];
+        $cliente['senha'] = $_POST['senha'];
 
-        $inserir = "INSERT INTO 'users' ";
-        $inserir .= "('', 'nome', 'sobrenome', 'email', 'password', 'remember_token', 'nascimento', 'rg', 'cpf', 'endereco', 'bairro', 'numero', 'complemento', 'cidade', 'estado', 'cep', 'telefone_res', 'telefone_cel') ";
-        $inserir .= 'VALUES  ';
-        $inserir .= "('','$nome','$sobrenome','$email','$senha','$confirma_senha', $nascimento, $rg, $cpf, '$endereco', '$bairro', $numero, '$complemento','$cidade', '$estado', $telefone_res, $telefone_cel )";
-
-        $operacao_inserir = mysqli_query($conecta, $inserir);
-        print_r($operacao_inserir);
-        if (!$operacao_inserir) {
-            die('<h1>Error: Fail connect in DATABASE</h1>');
+        if (gravarCliente($conecta, $cliente)) {
+            echo "<div class='msgcad'><h1>Gravado com Sucesso.</h1></div>";
+        } else {
+            echo "<div class='msgcad'><h1>Algo deu errado, reenvie o cadastro novamente.</h1></div>";
         }
     }
+}
+
+function gravarCliente()
+{
+    $campos = '(nome,sobrenome,email,nascimento,cpf,telefone,endereco,complemento,cep,cidade,estados,senha)';
+    $values = "('{$cliente['nome']}','{$cliente['sobrenome']}','{$cliente['email']}','{$cliente['nascimemnto']}','{$cliente['cpf']}','{$cliente['telefone']}','{$cliente['endereco']}','{$cliente['complemento']}','{$cliente['cep']}','{$cliente['cidade']}','{$cliente['estados']}','{$cliente['senha']}')";
+
+    print_r($values);
+    $query = "INSERT INTO users {$campos} VALUES {$values}";
+
+    if (mysqli_query($conecta, $query)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>
-<!DOCTYPE html>
-<html>
-	<body>
-	<!--header-->
-	<?php include 'header.php'; ?>
-	<!--/header-->
+
+<?php include 'header.php'; ?>
+<!--/header-->
 	<div class="container">
 		<div class="register">
 			<h1>Criar Conta</h1>
-			<form method="POST" action="cadastro.php"> 
+			<form action="cadastro.php" method="post"> 
 				<div class="col-md-6  register-top-grid">				
 					<div class="mation log">						
 						<span>Nome</span>
-						<input type="text"  id="nome" name="nome"> 
+						<input type="text" name="nome">
+						<span>Sobrenome</span>
+						<input type="text" name="sobrenome">
 						<span>Email</span>
-						<input type="text"  id="email" name="email">
-						<span>Confirme a senha</span>
-						<input type="password" name="remember_token" id="remember_token">					
-						<span>Cpf</span>
-						<input type="text"  id="cpf" name="cpf">
-						<span>Endereço</span>
-						<input type="text"  id="endereco" name="endereco">
-						<span>Complemento</span>
-						<input type="text"  id="complemento" name="complemento">
-						<span>Cidade</span>
-						<input type="text"  id="cidade" name="cidade">
-						<span>Telefone Residencial</span>
-						<input type="text"  id="telefone_res" name="telefone_res">					
+						<input type="text" name="email">
+						<span>Data de Nascimento</span>
+						<input type="text" name="nascimento">
+						<span>CPF</span>
+						<input type="text" name="cpf">
+						<span>Telefone</span>
+						<input type="text" name="telefone">
 					</div>					
 				</div>
 				<div class=" col-md-6 register-bottom-grid">
 					<div class="mation">
-						<span>Sobrenome</span>
-						<input type="text" name="sobrenome" id="sobrenome">					
-						<span>Senha</span>
-						<input type="password" name="password" id="password">					
-						<span>Data Nascimento</span>
-						<input type="text" name="nascimento" id="nascimento">
-						<span>Rg</span>
-						<input type="text" name="rg" id="rg">
-						<span>Número</span>
-						<input type="text" name="numero" id="numero">
-						<span>Bairro</span>
-						<input type="text" name="bairro" id="bairro">
-						<span>Estado</span>
-						<input type="text" name="estado" id="estado">
-						<span>Telefone Celular</span>
-						<input type="text" name="telefone_cel" id="telefone_cel">
+						<span>Endereço</span>
+						<input type="text" name="endereco">
+						<span>Complemento</span>
+						<input type="text" name="complemento">					
 						<span>Cep</span>
-						<input type="text" name="cep" id="cep">
-						
+						<input type="text" name="cep">
+						<span>Cidade</span>
+						<input type="text" name="cidade">
+						<span>Estado</span>
+						<select>
+							<option name="estados">SP</option>
+						</select>
+						<span>Senha</span>
+						<input type="password" name="senha">				
 					</div>
 				</div>
-					<div class="clearfix"> </div>
-					<a class="news-letter" href="#ao inscrever você concorda com os termos e regras da loja etc...">
-						<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Inscrever</label>
-					</a>
+				<!-- <div class="clearfix"></div>	 
+				<a class="news-letter" href="#ao inscrever você concorda com os termos e regras da loja etc..."><label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Aceito Termos e Condições de Uso</label></a> -->
+				<input type="submit" value="CADASTRAR" id="cadastrar">
 			</form>			
-			<div class="form">
-				<form method="POST" action="cadastro.php">
-					<input type="submit" value="CADASTRAR" name="cadastrar" id="cadastrar">
-					<div class="clearfix"> </div>
-				</form>
-			</div>
 		</div>
 	</div>
-	<!--footer-->
-		<?php include 'footer.php'; ?>
-		<!--//footer-->
-	</body>
-</html>
-<?php
-//Fechar conexão
-mysqli_close($conecta);
-?>
+<!--footer-->
+<?php include 'footer.php'; ?>
+</body>

@@ -1,21 +1,10 @@
 <?php
 
-//Passo 1
-    $servidor = 'localhost'; //erro202-se não conseguir conectar
-    $usuario = 'unixlira'; //erro1045-se não conseguir conectar
-    $senha = '#Fibra13'; //erro1045-se não conseguir conectar
-    $banco = 'bd_upstyle'; //erro1049-se não conseguir conectar
-
-    $conecta = mysqli_connect($servidor, $usuario, $senha, $banco);
-//Passo 2 Testar conaxão
-    if (mysqli_connect_errno()) {
-        die('Conexão Falhou!'.mysqli_connect_errno());
-    }
-
-// //Consulta a tabela users
-//     $consulta_usuario = 'SELECT * FROM users';
-//     $usuarios = mysql_query($conecta, $consulta_usuario);
-
-//     if (!$usuarios) {
-//         die('<h1>Error: Fail connect in DATABASE</h1strong>');
-//     }
+mysqli_report(MYSQLI_REPORT_STRICT);
+//Tratamento de erro- pegar na documentação as excessões
+try {
+    $conecta = new mysqli('127.0.0.1', 'admin', '1q2w3e', 'bd_upstyle');
+    //echo 'connect success';
+} catch (Exception $e) {
+    echo 'ERROR:'.$e->getMessage();
+}
